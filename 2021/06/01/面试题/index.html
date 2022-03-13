@@ -24,7 +24,7 @@
 <meta property="og:description" content="深拷贝 JSON.parse(JSON.stringify())—–会忽略undefined(丢失这个结构)，不能序列化函数(丢失这个结构) loadsh  cloneDeep  浅拷贝 Object.assign 扩展运算符  原型  flex flex:1 表示：flex-grow:1;flex-shrink:1,flex-basis:0% flex-grow 属性用于设置或检索弹性盒子的扩">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-01T01:59:51.000Z">
-<meta property="article:modified_time" content="2021-06-01T02:13:02.477Z">
+<meta property="article:modified_time" content="2022-03-13T12:14:22.818Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -97,7 +97,7 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Suche" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
@@ -133,7 +133,7 @@
         <span class="column is-narrow">
             
             
-            12 分钟 lesen (Über 1787 Wörter)
+            22 分钟 read (About 3310 words)
         </span>
         
     </div>
@@ -151,35 +151,22 @@
 <li><p>es5继承</p>
 </li>
 <li><p>防抖<br> 当事件被触发时，设定一个周期延迟执行动作，若期间又被触发，则重新设定周期，直到周期结束，执行动作。<strong>如何用代码写出来？</strong></p>
-</li>
+ <figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const handle = (function(){</span><br><span class="line">    let tid = null;</span><br><span class="line">    return function(value){</span><br><span class="line">      clearTimeout(tid)</span><br><span class="line">      tid = setTimeout(()=&gt;{</span><br><span class="line">        console.log(value)</span><br><span class="line">      },1000)</span><br><span class="line">    }</span><br><span class="line">  })()</span><br><span class="line">  const handlechange = ({value})=&gt;{</span><br><span class="line">    handle(value)</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>节流<br> 当事件快速连续不断触发时，动作只会执行一次。 延迟debounce，是在周期结束时执行，前缘debounce，是在周期开始时执行。但当触发有间断，且间断大于我们设定的时间间隔时，动作就会有多次执行。<strong>如何用代码写出来</strong></p>
-</li>
-</ol>
-<ol start="8">
+ <figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const handle = (function(){</span><br><span class="line">	let tid = null;</span><br><span class="line">	return function(value){</span><br><span class="line">		if(tid) return;</span><br><span class="line">		tid = setTimeout(()=&gt;{</span><br><span class="line">			console.log(value)</span><br><span class="line">			tid = null</span><br><span class="line">		},500)</span><br><span class="line">	}</span><br><span class="line">})()</span><br><span class="line">const handlechange = ({value})=&gt;{</span><br><span class="line">	handle(value)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>数组去重<br> Array.from(new Set(arr))<br> arr.filter((item,index)=&gt;arr.inexOf(item)==index)<br> arr.forEach(item=&gt;!data.includes(item) &amp;&amp; data.push(item))<br> 利用对象去重</p>
 </li>
 <li><p>文字颜色一半一半(没有效果)<br> color:transparent;<br> background:linear-gradient(to right,#ccc, #000);<br> -webkit-background-clip:text;</p>
 </li>
 <li><p>css三角形<br>底20px 高10px 的red三角形<br> width:0;<br>height:0;<br>border-bottom:10px solid red;<br>border-left:10px solid transparent;<br>border-right:10px solid transparent;</p>
 </li>
-<li><p>fetch是否可以取消请求（可以）<br>let controller = new AbortController();<br>let signal = controller.signal;</p>
-</li>
-</ol>
-<p>fetch(url, {<br>  signal: controller.signal<br>});</p>
-<p>signal.addEventListener(‘abort’,<br>  () =&gt; console.log(‘abort!’)<br>);</p>
-<p>controller.abort(); // 取消</p>
-<p>console.log(signal.aborted); // true</p>
-<ol start="12">
-<li><p>闭包:定义在一个函数内部的函数<br>作用：保护函数内变量的安全</p>
-<pre><code>     在内存中维持一个变量
-</code></pre>
+<li><p>fetch是否可以取消请求（可以）</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let controller = new AbortController();</span><br><span class="line">let signal = controller.signal;</span><br><span class="line"></span><br><span class="line">fetch(url, {</span><br><span class="line">	signal: controller.signal</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">signal.addEventListener('abort',</span><br><span class="line">	() =&gt; console.log('abort!')</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">controller.abort(); // 取消</span><br><span class="line"></span><br><span class="line">console.log(signal.aborted); // true</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>闭包:定义在一个函数内部的函数<br>作用：保护函数内变量的安全<br>在内存中维持一个变量</p>
 </li>
 <li><p>react生命周期<br>constructor()<br>componentWillMount()<br>componentDidMount()<br>render()<br>shouldComponentUpdate()<br>componentWillUpdate()<br>componentDidUpdate()<br>render()<br>componentWillUnmount()</p>
 </li>
-<li><p>less常用语法<br>变量  @width:10px; @height:@width+10px;<br>运算 + - * /  加减之前会做单位转化，计算结果以最左侧的操作数单位类型为准。</p>
-<pre><code>乘法除法不做转换。一个长度乘以一个长度得到一个区域，而css是
-不支持指定区域的。还可以对颜色进行算数运算
-</code></pre>
+<li><p>less常用语法<br>变量  @width:10px; @height:@width+10px;<br>运算 + - * /  加减之前会做单位转化，计算结果以最左侧的操作数单位类型为准。<br>乘法除法不做转换。一个长度乘以一个长度得到一个区域，而css是<br>不支持指定区域的。还可以对颜色进行算数运算</p>
 </li>
 <li><p>hooks和class的区别</p>
 </li>
@@ -191,14 +178,21 @@
 </li>
 <li><p>性能优化</p>
 </li>
-<li><p>diff算法</p>
+<li><p>diff算法<br>在某一时间节点调用 React 的 render() 方法，会创建一棵由 React 元素组成的树。在下一次 state 或 props 更新时，相同的 render() 方法会返回一棵不同的树。React 需要基于这两棵树之间的差别来判断如何高效的更新 UI，以保证当前 UI 与最新的树保持同步。<br><a target="_blank" rel="noopener" href="https://react.docschina.org/docs/reconciliation.html">官方文档的diff解释</a><br><em>总结一下</em></p>
+<ol>
+<li><p>当对比两棵树时，React 首先比较两棵树的根节点。不同类型的根节点元素会有不同的形态。</p>
+</li>
+<li><p>对比同一类型的元素<br>当对比两个相同类型的 React 元素时，React 会保留 DOM 节点，仅比对及更新有改变的属性。</p>
+</li>
+<li><p>对比同类型的组件元素<br>当一个组件更新时，组件实例会保持不变，因此可以在不同的渲染时保持 state 一致</p>
+</li>
+<li><p>对子节点进行递归    </p>
+</li>
+</ol>
 </li>
 <li><p>symbol<br>表示独一无二的值，最大的用法是用来定义对象的唯一属性名</p>
 </li>
-<li><p>接口跨域<br>jsonp</p>
-<pre><code>利用script标签可跨域来实现。缺点：只能发送get请求
-</code></pre>
-<p>nginx反向代理</p>
+<li><p>接口跨域<br>jsonp<br>利用script标签可跨域来实现。缺点：只能发送get请求<br>nginx反向代理</p>
 </li>
 <li><p>判断对象是否是数组<br>Array.isArray()<br>a instanceof Array<br>Object.prototype.toString.call(a) == ‘[object Array]’</p>
 </li>
@@ -206,8 +200,6 @@
 </li>
 <li><p>是否是空对象<br>JSON.stringfy({}) == ‘{}’<br>for in 循环判断<br>Object.keys({}).length == 0</p>
 </li>
-</ol>
-<ol start="26">
 <li><p>git rebase和merge的区别</p>
 </li>
 <li><p>1px的实现</p>
@@ -222,15 +214,11 @@
 </li>
 <li><p>文字一行，查出省略号显示<br>white-space:nowrap;<br>overflow:hidden;<br>text-overflow:ellipsis; </p>
 </li>
-<li><p>两行<br>text-overflow: ellipsis;</p>
-<pre><code>display: -webkit-box;
--webkit-line-clamp: 2;
-overflow: hidden;
-/*! autoprefixer: off */
--webkit-box-orient: vertical;
-/*! autoprefixer: on */
-</code></pre>
+<li><p>两行<br>text-overflow: ellipsis;<br>display: -webkit-box;</p>
 </li>
+</ol>
+<p>  -webkit-line-clamp: 2;<br>  overflow: hidden;<br>  /*! autoprefixer: off <em>/<br>  -webkit-box-orient: vertical;<br>  /</em>! autoprefixer: on */</p>
+<ol start="34">
 <li><p>animation和transition的区别</p>
 </li>
 <li><p>元素居中<br>flex<br>absolute</p>
@@ -269,10 +257,108 @@ overflow: hidden;
 </li>
 <li><p>import require的区别</p>
 </li>
-<li><p>cmd amd</p>
+<li><p>cmd amd<br>AMD 推崇依赖前置<br>CMD 推崇就近依赖</p>
 </li>
+</ol>
+<p>AMD依赖前置，js可以方便知道依赖模块是谁，立即加载，而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块。</p>
+<ol start="54">
 <li><p>兼容问题<br>1、ios时间对象<br>2、ios左右滑动会有回弹效果，如果没有等滑动停止，立即改变容器布局，容器内的元素会消失</p>
 </li>
+<li><p>get、post的区别</p>
+</li>
+<li><p>浏览器缓存</p>
+</li>
+<li><p>原型可以解决什么问题？<br>对象共享属性和共享方法</p>
+</li>
+<li><p>谁拥有原型<br>函数拥有:prototype<br>对象拥有：<strong>proto</strong></p>
+</li>
+<li><p>对象查找属性或者方法的顺序<br>先在对象本身查找==&gt;到构造函数查找==&gt;对象的原型查找==&gt;构造函数的原型查找==&gt;当前原型的原型中查找</p>
+</li>
+<li><p>原型链<br>是什么？ 就是把原型串联起来<br>原型链的顶端是null</p>
+</li>
+<li><p>延迟加载JS有哪些方式<br>async defer<br><a target="_blank" rel="noopener" href="http://growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">async和defer的区别</a><br>async: 异步下载，下载完成之后立即执行。无序执行，谁先加载完谁先执行<br>defer: 异步下载，解析完所有html之后顺序执行</p>
+</li>
+</ol>
+<ol start="62">
+<li>数据类型<br>7种基本数据类型和对象<br>7种基本数据类型：string number boolean bigint null undefined symbol</li>
+</ol>
+<p>NaN是一个数值类型，但是不是一个具体的数字<br>true+1 //2<br>字符串和其它类型相加，其它类型都被转为字符串</p>
+<p>undefined+1 //NaN<br>typeof(undefined+1) //number<br>typeof(NaN) //number<br>typeof(undefined) //undefined<br>typeof(null) //Object<br>NaN == NaN //false</p>
+<ol start="63">
+<li><p>null和undefined的区别？<br>先设计的null，后设计的undefined<br>null是一个表示“无”的对象转化为数值时为0<br>null是一个表示“无”的原始值，转化为数值时为NaN</p>
+</li>
+<li><p>==和=== 的区别<br>==： 比较值<br>===：比较值，还比较类型</p>
+</li>
+</ol>
+<p>string == number || boolean ||…<br>都会隐式转换为基本类型<br>对象=&gt;字符串=&gt;数值<br>布尔=&gt;shuzhi<br>null == undefined //true</p>
+<p>1==’1’ //true<br>true==1 //true<br>[1,2]==’1,2’ //true</p>
+<ol start="65">
+<li>微任务和宏任务<br>js是单线程的语言<br>JavaScript 语言的一大特点就是单线程，也就是说．同一个时间只能做一件事。那么，<br>为什么 Javascript 不能有多个线程呢 ？这样能提高效率啊<br>Javascript 的单线程，与亡的用途有关．作为浏览器脚本语言，JavaScript 的主要用<br>途是与用户互动，以及操作 DOM. 这决定了它只能是单线程，否则会带米很复杂的同步问<br>题．比如，假定 JavaScript 同时有两个线程，<br>个线程在某个 DOM 节点上添加内容，另<br>一个线程删除了这个节点，这时浏览器应该以哪个线程为准？<br>所以，为了避免复杂性，从一诞生，JavaScript 就是单线程，这己经成了这门语言的<br>核心特征，将来也不会改变</li>
+</ol>
+<p>for(var i=0;i&lt;3;i++&gt;){<br>    setTimeout(function(){<br>        console.log(i)<br>    },1000*i)<br>}<br>// 3 3 3</p>
+<p>for(let i=0;i&lt;3;i++){<br>    setTimeout(function(){<br>        console.log(i)<br>    },1000*i)<br>}<br>//0 1 2</p>
+<p>微任务 promise.then<br>宏任务 setTimeout…<br>要执行宏任务的前提是清空了所有的微任务<br>流程： 同步==&gt; 事件循环【微任务和宏任务】</p>
+<ol start="66">
+<li>JS作用域<br>var<br>1、除了函数外，js是没有块级作用域的<br>2、作用域链：内部可以访问外部的变量，但是外部不能访问内部的变量</li>
+</ol>
+<p>let const 具有块级作用域</p>
+<p>(function(){<br>    var a = b =10 //window.b<br>})()<br>console.log(a) //报错<br>console.log(b) //10</p>
+<p>function c(){<br>    var b = 1;<br>    function a(){<br>        console.log(b)<br>        var b = 2;<br>        console.log(b)<br>    }<br>    a();<br>    console.log(b)<br>}<br>c();</p>
+<p>//打印<br>undefined<br>2<br>1</p>
+<p>3、注意：js有变量提升的机制【变量悬挂声明】</p>
+<p>var name = ‘a’<br>(function(){<br>    if(typeof name == undefined){<br>        var name = ‘b’<br>        console.log(‘1111’+name)<br>    }else{<br>        console.log(‘222’+name)<br>    }<br>})()<br>//1111b</p>
+<p>4、优先级：声明变量&gt;声明普通函数&gt;参数&gt;变量提升<br>普通声明函数是不看函数定义的顺序<br>function fun(a){<br>    var a = 10;<br>    function a(){}<br>    console.log(a)<br>}</p>
+<p>fun(100) //10</p>
+<ol start="67">
+<li><p>JS对象<br>对象如果找属性|方法；<br>对象本生找==&gt;构造函数中找==&gt;对象原型中找==&gt;构造函数原型中找==&gt;对象上一层原型中找</p>
+</li>
+<li><p>判断是否为数组<br>const a = []<br>方式一：Array.isArray(a)<br>方式二：a instanceof Array<br>方式三：Object.prototype.toString.call(a).indexOf(‘Array’)&gt;-1<br>方式四：Array.prototype.isPrototypeOf(arr)<br>方式五：a.constructor.toString().indexOf(‘Array’)&gt;-1</p>
+</li>
+<li><p>slice,splice<br>[string | array].slice(?start,?end) 截取，不改变原值,返回新值<br>array.splice(?start,deleteCount,…items) 插入、删除、替换，会改变原数组</p>
+</li>
+<li><p>找出多维数组中的最大值<br>let arr = [<br>[4,23,35,1],<br>[1,33,5,23,333],<br>[2323,4,1,2]<br>]</p>
+</li>
+</ol>
+<p>let newArr = []<br>for(let i of arr){<br>newArr.push(Math.max(…i))<br>}</p>
+<ol start="71">
+<li>给数组新增方法<br>String.prototype.addPrefix = function(str){<br>return str+this;<br>}</li>
+</ol>
+<ol start="72">
+<li>找出字符串中出现最多次数的字符及次数<br>const str = ‘aaaaaaaaawffffffffffwefffffwefbbb’<br>const obj = {}<br>for(let i =0;i&lt;str.length;i++){<pre><code>const char = str[i]
+if(obj[char]){
+    obj[char]++;
+}else{
+    obj[char]=1;
+}
+</code></pre>
+}<br>let max=0;<br>for(let key in obj){<br>if(max&lt;obj[key]){<pre><code>max=obj[key]
+</code></pre>
+}<br>}</li>
+</ol>
+<p>for(let key in obj){<br>    if(obj[key]==max){<br>        console.log(‘出现最多的字符是’+key)<br>        break;<br>    }<br>}</p>
+<ol start="73">
+<li>new 操作符具体做了什么<br>1、创建了一个空的对象<br>2、将空对象的原型，指向于构造函数的原型<br>3、将空对象作为构造函数的上下文（改变this指向）<br>4、对构造函数有返回值的做处理判断</li>
+</ol>
+<p>function Foo(){}<br>new Foo().<strong>prototype</strong> == Foo.prototype //true</p>
+<ol start="74">
+<li>闭包<br>1、闭包是什么<br>闭包是一个函数加上到创建函数的作用域的连接<br>2、闭包可以解决什么问题(优点)<br>3、闭包的缺点<br>变量会驻留在内存中，造成内存损耗问题。内存泄漏（ie）</li>
+</ol>
+<p>function fun(){<br>    let a = 10<br>    return function(){<br>        a++<br>        console.log(a)<br>    }<br>}</p>
+<p>fun()();</p>
+<ol start="75">
+<li><p>JS继承有哪些方式<br>1、ES6 class<br>2、原型链继承<br>3、借用构造函数的形式</p>
+</li>
+<li><p>sort的用法<br>默认unicode排序</p>
+</li>
+<li><p>var、let、const的区别<br>1、var具有变量提升的机制<br>let、const没有变量提升机制<br>2、var 可以多次声明同一个变量<br>let不可以多次声明同一个变量<br>3、var、let声明变量的<br>const 声明常量</p>
+</li>
+<li><p>箭头函数和普通函数有什么区别<br>1、this指向<br>箭头函数中的this是在箭头函数定义时就决定的<br>箭头函数的this指向定义时候，外层第一个普通函数的this</p>
+</li>
+</ol>
+<p>let obj ={<br>    a: function(){<br>        console.log(this)<br>    }<br>    b:()=&gt;{<br>        console.log(this)<br>    }<br>}<br>obj.a() //obj<br>obj.b() //window</p>
+<p>let obj = {<br>    run:function(){<br>        return function(){<br>            console.log(this)<br>        }<br>    }<br>}<br>obj.run()() //window<br>2、箭头函数不能new(不能当作构造函数)<br>3、没有prototype<br>4、没有arguments</p>
+<ol start="79">
+<li>伪类和伪元素的区别</li>
 </ol>
 </body></html>
     
@@ -307,7 +393,7 @@ overflow: hidden;
     <div class="container">
         <div class="columns content">
             <!-- <div class="column is-narrow has-text-centered">
-                &copy; 2021 John Doe&nbsp;
+                &copy; 2022 John Doe&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div> -->
@@ -482,7 +568,7 @@ overflow: hidden;
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -495,10 +581,10 @@ overflow: hidden;
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Sin título)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/blog/content.json',
         };
